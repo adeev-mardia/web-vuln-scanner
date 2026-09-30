@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vulnscan"
+version = "0.1.0"
+description = "A real, HTTP-based web vulnerability scanner (SQLi, XSS, command injection, path traversal, IDOR, open redirect)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Adeev Mardia" }]
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "Flask>=3.0,<4.0",
+]
+
+[project.scripts]
+vulnscan = "vulnscan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vulnscan*"]
